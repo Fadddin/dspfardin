@@ -1,0 +1,16 @@
+clc;
+clear all;
+M = input("Enter the length of the filter ");
+beta = input("Enter the value of beta ");
+wc = input("Enter the cutoff frequency ");
+y = kaiser(M, beta);
+display(y);
+hn = fir1(M-1, wc, y);
+display("The unit sample response of the FIR filter is : ");
+display(hn);
+figure(1);
+freqz(hn, 1 , 512);
+grid on;
+xlabel("Normalized frequency");
+ylabel("Magnitude in dB");
+title("Frequency response of FIR filter ");
